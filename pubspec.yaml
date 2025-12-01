@@ -1,0 +1,44 @@
+name: tss_poster
+description: A professional Canva-style poster editor with realistic templates, advanced editing tools, drag-and-drop, and cross-platform support for all devices.
+version: 1.4.2
+topics:
+  - image-editor
+  - canvas
+  - poster
+  - design
+homepage: https://github.com/madhanlalprofession/tss_poster
+repository: https://github.com/madhanlalprofession/tss_poster
+issue_tracker: https://github.com/madhanlalprofession/tss_poster/issues
+
+
+environment:
+  sdk: ^3.0.0
+  flutter: ">=3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_colorpicker: ^1.1.0
+  google_fonts: ^6.3.2
+  image_picker: ^1.2.1
+  path_provider: ^2.1.5
+  uuid: ^4.5.2
+  file_picker: ^10.3.7
+  web: ^1.1.0
+  share_plus: '>=11.0.0 <13.0.0'
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^6.0.0
+
+flutter:
+  uses-material-design: true
+
+platforms:
+  android:
+  ios:
+  linux:
+  macos:
+  windows:
+  web:
