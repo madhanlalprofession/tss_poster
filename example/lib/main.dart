@@ -63,18 +63,30 @@ class _PosterHomePageState extends State<PosterHomePage> {
 
   Future<void> _exportPoster() async {
     try {
-      final exportService = ExportService();
-      await exportService.exportPoster(
-        controller.poster,
+      // 1. Capture the image from the controller
+      final image = await controller.exportAsImage();
+
+      if (image == null) {
+        if (mounted) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(content: Text('Failed to capture poster image')),
+          );
+        }
+        return;
+      }
+
+      // 2. Save/Download the image using ExportService
+      final result = await ExportService.saveImageToDevice(
+        image: image,
         format: ExportFormat.png,
         quality: ExportQuality.high,
         filename: 'my_awesome_poster',
       );
 
       if (mounted) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text('Poster exported successfully!')),
-        );
+        ScaffoldMessenger.of(
+          context,
+        ).showSnackBar(SnackBar(content: Text(result.message)));
       }
     } catch (e) {
       if (mounted) {
