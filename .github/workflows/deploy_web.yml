@@ -26,6 +26,9 @@ jobs:
           cd example
           flutter pub get
           flutter build web --release --base-href "/tss_poster/"
+          cd build/web
+          touch .nojekyll
+          ls -R
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
