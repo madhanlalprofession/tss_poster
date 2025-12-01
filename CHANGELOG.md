@@ -1,3 +1,8 @@
+## 1.4.3
+* **Web Demo**: Added a live web demo link to README.
+* **Repository**: Fixed repository and issue tracker URLs.
+* **Example**: Created a full Flutter Web example app.
+
 ## 1.4.2
 * **Documentation**: Updated installation instructions in README to reflect the correct version.
 * **Maintenance**: Verified platform support and package details for publishing.
