@@ -1,3 +1,7 @@
+## 1.4.4
+* **Documentation**: Corrected installation instructions in README to reflect the correct version.
+* **Maintenance**: Bumped version to resolve documentation inconsistencies.
+
 ## 1.4.3
 * **Web Demo**: Added a live web demo link to README.
 * **Repository**: Fixed repository and issue tracker URLs.

@@ -30,7 +30,7 @@ Add `tss_poster` to your `pubspec.yaml`:
 
 ```yaml
 dependencies:
-  tss_poster: ^1.4.2
+  tss_poster: ^1.4.4
 ```
 
 Then run:
