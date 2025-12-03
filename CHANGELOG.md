@@ -1,3 +1,9 @@
+## 1.4.5
+
+* Fixed duplicate AppBars in example app.
+* Implemented tap-outside to deselect widgets.
+* Improved UI layout by moving Toolbar next to Property Panel.
+
 ## 1.4.4
 * **Documentation**: Corrected installation instructions in README to reflect the correct version.
 * **Maintenance**: Bumped version to resolve documentation inconsistencies.

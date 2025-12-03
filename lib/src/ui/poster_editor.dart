@@ -292,16 +292,6 @@ class _PosterEditorState extends State<PosterEditor> {
           : null,
       body: Row(
         children: [
-          if (!isMobile)
-            SizedBox(
-              width: 80,
-              child: Toolbar(
-                controller: _controller,
-                showText: widget.showText,
-                showImage: widget.showImage,
-                showShape: widget.showShape,
-              ),
-            ),
           Expanded(
             child: Container(
               margin: isMobile ? EdgeInsets.zero : const EdgeInsets.all(20),
@@ -315,6 +305,16 @@ class _PosterEditorState extends State<PosterEditor> {
               ),
             ),
           ),
+          if (!isMobile)
+            SizedBox(
+              width: 80,
+              child: Toolbar(
+                controller: _controller,
+                showText: widget.showText,
+                showImage: widget.showImage,
+                showShape: widget.showShape,
+              ),
+            ),
           if (!isMobile)
             SizedBox(
               width: 300,

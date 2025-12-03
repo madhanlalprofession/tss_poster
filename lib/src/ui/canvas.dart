@@ -89,61 +89,69 @@ class _PosterCanvasState extends State<PosterCanvas> {
               scaleEnabled: !_isInteracting,
               child: RepaintBoundary(
                 key: widget.controller.repaintBoundaryKey,
-                child: Container(
-                  width: poster.size.width,
-                  height: poster.size.height,
-                  decoration: BoxDecoration(
-                    color: poster.backgroundColor,
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.black.withValues(alpha: 0.2),
-                        blurRadius: 10,
-                        spreadRadius: 2,
-                      ),
-                    ],
-                  ),
-                  child: Stack(
-                    children: [
-                      if (poster.backgroundImage != null)
-                        Positioned.fill(
-                          child: Image.network(
-                            poster.backgroundImage!,
-                            fit: BoxFit.cover,
-                            errorBuilder: (context, error, stackTrace) {
-                              return const Center(
-                                child: Icon(Icons.broken_image,
-                                    size: 50, color: Colors.grey),
-                              );
-                            },
-                          ),
+                child: GestureDetector(
+                  onTap: () {
+                    if (!_isInteracting) {
+                      widget.controller.selectLayer(null);
+                    }
+                  },
+                  child: Container(
+                    width: poster.size.width,
+                    height: poster.size.height,
+                    decoration: BoxDecoration(
+                      color: poster.backgroundColor,
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.black.withValues(alpha: 0.2),
+                          blurRadius: 10,
+                          spreadRadius: 2,
                         ),
-                      ...poster.layers.map((layer) {
-                        return LayerWidget(
-                          layer: layer,
-                          onTap: () => widget.controller.selectLayer(layer.id),
-                          onDoubleTap: () {
-                            if (layer is TextLayer && widget.onEdit != null) {
-                              widget.onEdit!(layer.id, layer.text);
-                            }
-                          },
-                          onResize: (size) {
-                            widget.controller.resizeLayer(layer.id, size);
-                          },
-                          onRotate: (rotation) {
-                            widget.controller.rotateLayer(layer.id, rotation);
-                          },
-                          onMove: (delta) {
-                            widget.controller.moveLayer(delta);
-                          },
-                          onInteractionStart: () {
-                            setState(() => _isInteracting = true);
-                          },
-                          onInteractionEnd: () {
-                            setState(() => _isInteracting = false);
-                          },
-                        );
-                      }),
-                    ],
+                      ],
+                    ),
+                    child: Stack(
+                      children: [
+                        if (poster.backgroundImage != null)
+                          Positioned.fill(
+                            child: Image.network(
+                              poster.backgroundImage!,
+                              fit: BoxFit.cover,
+                              errorBuilder: (context, error, stackTrace) {
+                                return const Center(
+                                  child: Icon(Icons.broken_image,
+                                      size: 50, color: Colors.grey),
+                                );
+                              },
+                            ),
+                          ),
+                        ...poster.layers.map((layer) {
+                          return LayerWidget(
+                            layer: layer,
+                            onTap: () =>
+                                widget.controller.selectLayer(layer.id),
+                            onDoubleTap: () {
+                              if (layer is TextLayer && widget.onEdit != null) {
+                                widget.onEdit!(layer.id, layer.text);
+                              }
+                            },
+                            onResize: (size) {
+                              widget.controller.resizeLayer(layer.id, size);
+                            },
+                            onRotate: (rotation) {
+                              widget.controller.rotateLayer(layer.id, rotation);
+                            },
+                            onMove: (delta) {
+                              widget.controller.moveLayer(delta);
+                            },
+                            onInteractionStart: () {
+                              setState(() => _isInteracting = true);
+                            },
+                            onInteractionEnd: () {
+                              setState(() => _isInteracting = false);
+                            },
+                          );
+                        }),
+                      ],
+                    ),
                   ),
                 ),
               ),
