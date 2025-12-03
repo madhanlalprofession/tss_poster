@@ -1,3 +1,14 @@
+## 1.4.7
+
+* Fixed `redo` functionality by ensuring `TextLayer` properties (position, rotation, scale) are correctly restored.
+* Improved undo/redo granularity: property changes (move, resize, rotate, etc.) are now undoable.
+
+## 1.4.6
+
+* Removed duplicate `lib/main.dart` file to prevent confusion.
+* Verified fix for duplicate download icons.
+* Ensured clean example app structure.
+
 ## 1.4.5
 
 * Fixed duplicate AppBars in example app.

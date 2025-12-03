@@ -74,6 +74,7 @@ class PosterController extends ChangeNotifier {
     // But for simplicity:
     final index = _poster.layers.indexWhere((l) => l.id == id);
     if (index != -1) {
+      _saveState();
       _poster.layers[index] = newLayer;
       notifyListeners();
     }
@@ -84,6 +85,7 @@ class PosterController extends ChangeNotifier {
   void bringToFront(String id) {
     final index = _poster.layers.indexWhere((l) => l.id == id);
     if (index != -1 && index < _poster.layers.length - 1) {
+      _saveState();
       final layer = _poster.layers.removeAt(index);
       _poster.layers.add(layer);
       notifyListeners();
@@ -94,6 +96,7 @@ class PosterController extends ChangeNotifier {
   void sendToBack(String id) {
     final index = _poster.layers.indexWhere((l) => l.id == id);
     if (index != -1 && index > 0) {
+      _saveState();
       final layer = _poster.layers.removeAt(index);
       _poster.layers.insert(0, layer);
       notifyListeners();
@@ -104,6 +107,7 @@ class PosterController extends ChangeNotifier {
     if (oldIndex < newIndex) {
       newIndex -= 1;
     }
+    _saveState();
     final layer = _poster.layers.removeAt(oldIndex);
     _poster.layers.insert(newIndex, layer);
     notifyListeners();
@@ -127,6 +131,7 @@ class PosterController extends ChangeNotifier {
 
   /// Updates the background color of the poster.
   void updateBackground(Color color) {
+    _saveState();
     _poster.backgroundColor = color;
     _poster.backgroundImage = null;
     notifyListeners();
@@ -134,6 +139,7 @@ class PosterController extends ChangeNotifier {
 
   /// Updates the background image of the poster.
   void updateBackgroundImage(String path) {
+    _saveState();
     _poster.backgroundImage = path;
     notifyListeners();
   }
@@ -143,6 +149,7 @@ class PosterController extends ChangeNotifier {
   void moveLayer(Offset delta) {
     final layer = selectedLayer;
     if (layer != null) {
+      _saveState();
       layer.position += delta;
       notifyListeners();
     }
@@ -188,6 +195,7 @@ class PosterController extends ChangeNotifier {
   void resizeLayer(String id, Size newSize) {
     final index = _poster.layers.indexWhere((l) => l.id == id);
     if (index != -1) {
+      _saveState();
       _poster.layers[index].width = newSize.width;
       _poster.layers[index].height = newSize.height;
       notifyListeners();
@@ -198,6 +206,7 @@ class PosterController extends ChangeNotifier {
   void rotateLayer(String id, double angle) {
     final index = _poster.layers.indexWhere((l) => l.id == id);
     if (index != -1) {
+      _saveState();
       _poster.layers[index].rotation = angle;
       notifyListeners();
     }
@@ -258,6 +267,7 @@ class PosterController extends ChangeNotifier {
   void lockLayer(String id, bool locked) {
     final index = _poster.layers.indexWhere((l) => l.id == id);
     if (index != -1) {
+      _saveState();
       _poster.layers[index].isLocked = locked;
       notifyListeners();
     }
@@ -267,6 +277,7 @@ class PosterController extends ChangeNotifier {
   void updateLayerOpacity(String id, double opacity) {
     final index = _poster.layers.indexWhere((l) => l.id == id);
     if (index != -1) {
+      _saveState();
       _poster.layers[index].opacity = opacity.clamp(0.0, 1.0);
       notifyListeners();
     }
@@ -276,6 +287,7 @@ class PosterController extends ChangeNotifier {
   void scaleLayer(String id, double scale) {
     final index = _poster.layers.indexWhere((l) => l.id == id);
     if (index != -1) {
+      _saveState();
       _poster.layers[index].scale = scale;
       notifyListeners();
     }

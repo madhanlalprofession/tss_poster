@@ -132,6 +132,9 @@ class TextLayer extends LayerModel {
         fontFamily: styleJson['fontFamily'],
       ),
       align: TextAlign.values[json['align'] ?? 0],
+      position: Offset(json['dx'] ?? 0, json['dy'] ?? 0),
+      rotation: json['rotation'] ?? 0.0,
+      scale: json['scale'] ?? 1.0,
     );
     layer.opacity = json['opacity'] ?? 1.0;
     layer.isLocked = json['isLocked'] ?? false;
